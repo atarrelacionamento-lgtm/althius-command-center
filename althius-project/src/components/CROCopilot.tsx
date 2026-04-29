@@ -222,7 +222,7 @@ export function CROCopilot() {
 
       {/* Sheet panel */}
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent side="right" className="w-full sm:max-w-md flex flex-col p-0 gap-0">
+        <SheetContent side="right" hideClose className="w-full sm:max-w-md flex flex-col p-0 gap-0">
           {/* Header */}
           <SheetHeader className="px-4 py-3 border-b flex-row items-center justify-between space-y-0">
             <div className="flex items-center gap-2">
