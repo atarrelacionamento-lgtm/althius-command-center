@@ -5,7 +5,7 @@ import {
   isLocalAuthBypassEnabled,
   isSupabaseConfigured,
 } from '@/lib/supabase';
-import type { Profile } from '@/types';
+import type { Profile, Role } from '@/types';
 
 const BYPASS_USER_ID = '00000000-0000-0000-0000-000000000000';
 
@@ -64,57 +64,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!isSupabaseConfigured) {
-      if (isLocalAuthBypassEnabled) {
-        setSession(bypassSession);
-        setProfile(bypassProfile);
-      } else {
-        setSession(null);
-        setProfile(null);
-      }
-      setLoading(false);
-      return;
-    }
-
-    supabase.auth.getSession().then(({ data: { session: realSession } }) => {
-      if (realSession) {
-        setSession(realSession);
-        fetchProfile(realSession.user);
-      } else {
-        setSession(null);
-        setProfile(null);
-        setLoading(false);
-      }
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, realSession) => {
-      if (realSession) {
-        setSession(realSession);
-        fetchProfile(realSession.user);
-      } else {
-        setSession(null);
-        setProfile(null);
-        setLoading(false);
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  async function fetchProfile(user: User) {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', user.id)
-      .single();
-
-    if (error) {
-      console.warn('[Althius Driven] Perfil não encontrado; usando fallback seguro.', error.message);
-    }
-
-    setProfile(data ?? buildFallbackProfile(user));
+    // Forçar bypass total no ambiente de sandbox
+    setSession(bypassSession);
+    setProfile(bypassProfile);
     setLoading(false);
-  }
+  }, []);
 
   return (
     <AuthContext.Provider value={{ session, profile, role: profile?.role ?? null, loading }}>

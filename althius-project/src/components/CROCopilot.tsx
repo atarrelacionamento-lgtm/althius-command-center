@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/sheet";
 import { supabase } from "@/lib/supabase";
 import { getOperationalCalendarInsights } from "@/lib/brCalendar";
-import { Althius_GTM_CONTEXT } from "@/lib/pipaGtm";
+import { PIPA_GTM_CONTEXT } from "@/lib/pipaGtm";
 import { getGtmMetrics } from "@/services/gtmMetricsService";
 
 // ── Types ────────────────────────────────────────────────
@@ -38,7 +38,7 @@ async function getRouteContext(pathname: string) {
   if (!companyMatch) {
     return {
       pathname,
-      gtm: Althius_GTM_CONTEXT,
+      gtm: PIPA_GTM_CONTEXT,
       calendar,
       metrics,
       company: null,
@@ -56,7 +56,7 @@ async function getRouteContext(pathname: string) {
 
   return {
     pathname,
-    gtm: Althius_GTM_CONTEXT,
+    gtm: PIPA_GTM_CONTEXT,
     calendar,
     metrics,
     company: {

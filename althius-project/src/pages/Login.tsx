@@ -35,6 +35,17 @@ export default function Login() {
     setError(null);
     setLoading(true);
 
+    if (!isSupabaseConfigured && isLocalAuthBypassEnabled) {
+      // Simula um delay de rede
+      setTimeout(() => {
+        setLoading(false);
+        // O AuthContext irá detectar o bypass e redirecionar
+        // Mas forçamos o reload para garantir que o estado do contexto seja atualizado
+        window.location.href = '/dashboard';
+      }, 800);
+      return;
+    }
+
     const { error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
