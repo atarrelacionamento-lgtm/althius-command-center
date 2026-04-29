@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pipa Driven CRM Sync</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main id="app">
+    <section id="login-screen" class="screen">
+      <header class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <h1>Pipa Driven</h1>
+          <p>WhatsApp CRM Sync</p>
+        </div>
+      </header>
+
+      <form id="login-form" class="panel">
+        <label>
+          <span>E-mail</span>
+          <input
+            id="email"
+            type="email"
+            placeholder="voce@empresa.com"
+            autocomplete="username"
+            required
+          />
+        </label>
+
+        <label>
+          <span>Senha</span>
+          <input
+            id="password"
+            type="password"
+            placeholder="Sua senha do CRM"
+            autocomplete="current-password"
+            required
+          />
+        </label>
+
+        <button id="login-btn" type="submit">Entrar</button>
+        <p class="hint">Use o mesmo login do CRM Pipa Driven.</p>
+        <p id="login-error" class="error hidden"></p>
+      </form>
+    </section>
+
+    <section id="main-screen" class="screen hidden">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">CRM conectado</p>
+          <h2 id="session-title">—</h2>
+          <p id="session-url" class="muted">—</p>
+        </div>
+        <button id="logout-btn" type="button" class="ghost">Sair</button>
+      </header>
+
+      <section class="status" id="status-card">
+        <div id="status-dot" class="dot"></div>
+        <div>
+          <strong id="status-title">Aguardando WhatsApp Web</strong>
+          <p id="status-detail">Abra uma conversa para validar o telefone no CRM.</p>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article>
+          <strong id="stat-lookups">0</strong>
+          <span>Consultas</span>
+        </article>
+        <article>
+          <strong id="stat-eligible">0</strong>
+          <span>Elegíveis</span>
+        </article>
+        <article>
+          <strong id="stat-ignored">0</strong>
+          <span>Ignorados</span>
+        </article>
+        <article>
+          <strong id="stat-synced">0</strong>
+          <span>Sincronizadas</span>
+        </article>
+      </section>
+
+      <section class="panel compact">
+        <div class="row">
+          <span>Último telefone</span>
+          <strong id="last-phone">—</strong>
+        </div>
+        <div class="row">
+          <span>Último contato</span>
+          <strong id="last-contact">—</strong>
+        </div>
+        <div class="row">
+          <span>Último sync</span>
+          <strong id="last-sync">—</strong>
+        </div>
+        <div class="row error-row hidden" id="last-error-row">
+          <span>Erro</span>
+          <strong id="last-error">—</strong>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

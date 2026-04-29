@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Althius - SpaceX Aesthetic (Dark/Light monochromatic) */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 0 0% 0%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 0 0% 0%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar - SpaceX Dark */
+    --sidebar-bg: 0 0% 0%;
+    --sidebar-fg: 0 0% 70%;
+    --sidebar-active: 0 0% 100%;
+    --sidebar-hover: 0 0% 10%;
+    --sidebar-accent: 0 0% 100%;
+
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 70%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent-bg: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 100%;
+
+    /* Chart colors - Monochromatic */
+    --chart-1: 0 0% 0%;
+    --chart-2: 0 0% 20%;
+    --chart-3: 0 0% 40%;
+    --chart-4: 0 0% 60%;
+    --chart-5: 0 0% 80%;
+
+    /* Status */
+    --success: 0 0% 0%;
+    --success-foreground: 0 0% 100%;
+    --warning: 0 0% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Althius specific */
+    --althius-surface: 0 0% 100%;
+    --althius-border: 0 0% 89%;
+  }
+
+  /* SpaceX Dark Mode */
+  .dark {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 100%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 0 0% 100%;
+
+    /* Sidebar */
+    --sidebar-bg: 0 0% 0%;
+    --sidebar-fg: 0 0% 65%;
+    --sidebar-active: 0 0% 100%;
+    --sidebar-hover: 0 0% 8%;
+    --sidebar-accent: 0 0% 100%;
+
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 65%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent-bg: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 10%;
+    --sidebar-ring: 0 0% 100%;
+
+    /* Chart colors */
+    --chart-1: 0 0% 100%;
+    --chart-2: 0 0% 80%;
+    --chart-3: 0 0% 60%;
+    --chart-4: 0 0% 40%;
+    --chart-5: 0 0% 20%;
+
+    /* Status */
+    --success: 0 0% 100%;
+    --success-foreground: 0 0% 0%;
+    --warning: 0 0% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Althius specific */
+    --althius-surface: 0 0% 4%;
+    --althius-border: 0 0% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-bold uppercase;
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .stat-card {
+    @apply bg-card rounded-none p-5 border border-border hover:border-primary/50 transition-all duration-300;
+    border-left: 2px solid hsl(var(--primary));
+  }
+
+  .chart-card {
+    @apply bg-card rounded-none p-5 border border-border;
+  }
+
+  .badge-success {
+    @apply text-[10px] font-bold px-2 py-0.5 rounded-none uppercase tracking-widest;
+    color: hsl(var(--primary-foreground));
+    background: hsl(var(--primary));
+  }
+
+  .badge-destructive {
+    @apply text-[10px] font-bold px-2 py-0.5 rounded-none uppercase tracking-widest;
+    color: hsl(var(--destructive-foreground));
+    background: hsl(var(--destructive));
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-none text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer;
+    color: hsl(var(--sidebar-fg));
+  }
+
+  .sidebar-item:hover {
+    background: hsl(var(--sidebar-hover));
+    color: hsl(var(--sidebar-active));
+  }
+
+  .sidebar-item-active {
+    background: hsl(var(--sidebar-accent-bg));
+    color: hsl(var(--sidebar-active));
+    border-left: 2px solid hsl(var(--sidebar-active));
+  }
+
+  .althius-divider {
+    width: 32px;
+    height: 1px;
+    background: hsl(var(--primary));
+    margin: 1rem 0;
+  }
+
+  .althius-badge {
+    @apply inline-block text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-none;
+    color: hsl(var(--primary));
+    background: transparent;
+    border: 1px solid hsl(var(--primary));
+  }
+
+  .althius-dot-bg {
+    background-image: radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-color: hsl(var(--background));
+  }
+
+  .glass-effect {
+    @apply bg-background/80 backdrop-blur-md border-b border-border;
+  }
+  
+  .space-gradient {
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--secondary)) 100%);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
